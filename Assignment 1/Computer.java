@@ -52,5 +52,11 @@
 			return totalNoOfComputers;
 		}
      
-    
+    public boolean equals(Computer ob1) {
+    	if((this.brand==ob1.brand) && (this.model==ob1.model) && (this.price==ob1.price) ) {
+    		return true;
+    	}
+    	else
+		return false;
+    }
 }

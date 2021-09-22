@@ -4,8 +4,19 @@
 	 private String model;
 	 private long SN;
      private double price;	 
-     
-	 public String getBrand() {
+     private static int totalNoOfComputers=0;
+	
+
+	public Computer(String brand, String model, long sN, double price) {
+		
+		this.brand = brand;
+		this.model = model;
+		this.SN = sN;
+		this.price = price;
+		totalNoOfComputers++;
+	}
+
+	public String getBrand() {
 		return brand;
 	}
 
@@ -37,6 +48,9 @@
 		this.price = price;
 	}
 
+	public static int findNumberOfCreatedComputers() {
+			return totalNoOfComputers;
+		}
      
     
 }

@@ -59,4 +59,9 @@
     	else
 		return false;
     }
+    
+    public String toString() {
+		return "Computer Details: \n" + "Brand Name: "+this.brand+ "\nModel: "+this.model+"\nSerial No: "+this.SN+ "\nPrice: "+this.price+"\n";
+    	
+    }
 }

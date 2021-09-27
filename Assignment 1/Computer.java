@@ -6,7 +6,7 @@
      private double price;	 
      private static int totalNoOfComputers=0;
 	
-
+// TODO Add default constructor; Add copy constructor; modify equals method
 	public Computer(String brand, String model, long sN, double price) {
 		
 		this.brand = brand;
@@ -64,4 +64,13 @@
 		return "Computer Details: \n" + "Brand Name: "+this.brand+ "\nModel: "+this.model+"\nSerial No: "+this.SN+ "\nPrice: "+this.price+"\n";
     	
     }
+    
+    public boolean equals(Object obj) {
+		if(obj==null||(this.getClass()!=obj.getClass()))
+				return false;
+				else
+				{     Computer comp  = (Computer)obj;
+					return (this.brand == comp.brand && this.model ==comp.model && this.price==comp.price && this.SN==comp.SN );
+				}		
+	}
 }

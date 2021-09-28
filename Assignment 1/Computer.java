@@ -12,7 +12,7 @@ class Computer{
      private double price;	 
      private static int totalNoOfComputers=0;
 	
-// TODO Add default constructor; Add copy constructor; modify equals method
+// TODO Add default constructor; 
 	public Computer(String brand, String model, long sN, double price) {
 		
 		this.brand = brand;

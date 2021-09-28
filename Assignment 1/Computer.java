@@ -1,4 +1,10 @@
- class Computer{
+// -----------------------------------------------------
+// Assignment 1 - COMP 6481
+// © Dhananjay Narayan, Nilesh Aggarwal
+// Written by: Dhananjay Narayan (40164521), Nilesh Aggarwal( )
+// ----------------------------------------------------- 
+
+class Computer{
 
 	 private String brand;
 	 private String model;
@@ -16,6 +22,13 @@
 		totalNoOfComputers++;
 	}
 
+	public Computer (Computer comp) {
+	this.brand=comp.brand;
+	this.model=comp.model;
+	this.price=comp.price;
+	this.SN=comp.SN;
+	}
+	
 	public String getBrand() {
 		return brand;
 	}

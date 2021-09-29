@@ -77,26 +77,17 @@ public class Driver {
 			case 3:
 				System.out.println("Enter the Brand Name : ");
 				String brand = sc.next();
-				for(int i=0;i<=inventory.length;i++) {
-					try {
-						if(inventory[i].getBrand().equals(brand) && inventory[i].getBrand()!=null) {
-							System.out.println(inventory[i].toString());
-						}
-						else
-							continue;
-					}
-					catch(Exception e){
-						if(i==inventory.length)
-						System.out.println("End of Search!");
-					}
-					
-				}
+				findComputersBy(brand,inventory);
 				break;
 			case 4:
+				System.out.println("Enter the Price : ");
+				double price = sc.nextDouble();
+				findCheaperThan(price,inventory);
 				break;
 				
 			case 5: 
 				System.out.println("Bye!!!");
+				System.exit(0);
 				break;
 			default:
 				System.out.println("Enter a valid option between 1-5!");
@@ -123,6 +114,42 @@ public class Driver {
 			}			
 			}		
 		return false;
+	}
+	
+	public static void findComputersBy(String brand,Computer[] inventory) {
+		
+		for(int i=0;i<=inventory.length;i++) {
+			try {
+				if(inventory[i].getBrand().equals(brand)) {
+					System.out.println("\n"+ inventory[i].toString());
+				}
+				else
+					continue;
+			}
+			catch(Exception e){
+				if(i==inventory.length)
+				System.out.println("End of Search!");
+			}
+			
+		}
+	}
+	
+	public static void findCheaperThan(double price, Computer[] inventory) {
+		for(int i=0;i<=inventory.length;i++) {
+			try {
+				if(inventory[i].getPrice() < price) {
+					System.out.println("\n"+ inventory[i].toString());
+				}
+				else
+					continue;
+			}
+			catch(Exception e){
+				if(i==inventory.length)
+				System.out.println("End of Search!");
+			}
+			
+		}
+		
 	}
 
 }

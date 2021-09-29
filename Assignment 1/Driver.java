@@ -49,9 +49,9 @@ public class Driver {
 				
 				int computersTillNow = Computer.findNumberOfCreatedComputers();
 				System.out.println("Already created computers till now: "+computersTillNow+ " out of "+maxComputers);
-				int availableSpace = maxComputers - noOfCompToAdd;
+				int availableSpace = maxComputers - computersTillNow;
 				if(noOfCompToAdd>availableSpace) {
-					System.out.println("NO ENOUGH SPACE TO ADD.");
+					System.out.println("NO ENOUGH SPACE TO ADD. The available space is "+availableSpace);
 					break;
 				}
 				else {
@@ -77,7 +77,18 @@ public class Driver {
 			case 3:
 				System.out.println("Enter the Brand Name : ");
 				String brand = sc.next();
-				for(int i=0;i<inventory.length;i++) {
+				for(int i=0;i<=inventory.length;i++) {
+					try {
+						if(inventory[i].getBrand().equals(brand) && inventory[i].getBrand()!=null) {
+							System.out.println(inventory[i].toString());
+						}
+						else
+							continue;
+					}
+					catch(Exception e){
+						if(i==inventory.length)
+						System.out.println("End of Search!");
+					}
 					
 				}
 				break;

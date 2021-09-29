@@ -20,6 +20,7 @@ class Computer{
 		this.SN = sN;
 		this.price = price;
 		totalNoOfComputers++;
+		this.toString();
 	}
 
 	public Computer (Computer comp) {

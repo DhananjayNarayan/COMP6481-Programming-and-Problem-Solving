@@ -17,14 +17,14 @@ public class Driver {
 		System.out.println("=============================");
 		System.out.println();
 		
-		System.out.println("Enter the maximum number of Computers your store can have: \n");
+		System.out.println("Enter the maximum number of Computers your store can have: ");
 		
 		int maxComputers = sc.nextInt();
 		
 		Computer[] inventory = new Computer[maxComputers];
 		
 		while(true) {
-			System.out.println("What do you want to do?\n");
+			System.out.println("\n What do you want to do?\n");
 			System.out.println("1. Enter new computers (password required)");
 			System.out.println("2. Change information of a computer (password required)");
 			System.out.println("3. Display all computers by a specific brand");
@@ -47,6 +47,48 @@ public class Driver {
 				System.out.println("How many computers do you want to add in the inventory?");
 				int noOfCompToAdd = sc.nextInt();
 				
+				int computersTillNow = Computer.findNumberOfCreatedComputers();
+				System.out.println("Already created computers till now: "+computersTillNow+ " out of "+maxComputers);
+				int availableSpace = maxComputers - noOfCompToAdd;
+				if(noOfCompToAdd>availableSpace) {
+					System.out.println("NO ENOUGH SPACE TO ADD.");
+					break;
+				}
+				else {
+					for(int i=1;i<=noOfCompToAdd;i++) {
+						System.out.println("Enter the Brand of Computer "+i+" of "+noOfCompToAdd+" computers to be added.");
+						String brand = sc.next();
+						System.out.println("Enter the Model of Computer "+i+" of "+noOfCompToAdd+" computers to be added.");
+						String model = sc.next();
+						System.out.println("Enter the Serial Number of Computer "+i+" of "+noOfCompToAdd+" computers to be added.");
+						long SN=sc.nextLong();
+						System.out.println("Enter the Price of Computer "+i+" of "+noOfCompToAdd+" computers to be added.");
+						double price=sc.nextDouble();
+						inventory[computersTillNow]= new Computer(brand,model,SN,price);
+						System.out.println(inventory[computersTillNow].toString());
+						computersTillNow++;
+					}
+					System.out.println("Total Computers now added is: "+Computer.findNumberOfCreatedComputers()+" of "+maxComputers);
+				}
+				continue;
+				
+			case 2:
+				break;
+			case 3:
+				System.out.println("Enter the Brand Name : ");
+				String brand = sc.next();
+				for(int i=0;i<inventory.length;i++) {
+					
+				}
+				break;
+			case 4:
+				break;
+				
+			case 5: 
+				System.out.println("Bye!!!");
+				break;
+			default:
+				System.out.println("Enter a valid option between 1-5!");
 				
 			}
 		}
@@ -54,7 +96,6 @@ public class Driver {
 	}
 
 	public static boolean passwordCheck() {
-		// TODO Auto-generated method stub
 		for(int i=1;i<=3;i++) {
 			System.out.println("Attempt "+i+" : ");
 			

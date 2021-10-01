@@ -6,13 +6,14 @@
 
 class Computer{
 
+	//Attributes of the Computer class
 	 private String brand;
 	 private String model;
 	 private long SN;
      private double price;	 
      private static int totalNoOfComputers=0;
 	
-// TODO Add default constructor; 
+  //Parameterized Constructor
 	public Computer(String brand, String model, long sN, double price) {
 		
 		this.brand = brand;
@@ -22,7 +23,8 @@ class Computer{
 		totalNoOfComputers++;
 		this.toString();
 	}
-
+	
+   //Copy Constructor
 	public Computer (Computer comp) {
 	this.brand=comp.brand;
 	this.model=comp.model;
@@ -30,48 +32,67 @@ class Computer{
 	this.SN=comp.SN;
 	}
 	
+	//Default Constructor
+	public Computer() {
+		this.brand="NA";
+		this.model="NA";
+		this.SN=0;
+		this.price=0;
+		totalNoOfComputers++;
+	}
+	
+	//Accessor for Brand
 	public String getBrand() {
 		return brand;
 	}
 
+	//Mutator for Brand
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
 
+	//Accessor for Model
 	public String getModel() {
 		return model;
 	}
 
+	//Mutator for Model
 	public void setModel(String model) {
 		this.model = model;
 	}
 
+	//Accessor for Serial Number SN
 	public long getSN() {
 		return SN;
 	}
 
+	//Mutator for Serial Number SN
 	public void setSN(long sN) {
 		SN = sN;
 	}
 
+	//Accessor for Price
 	public double getPrice() {
 		return price;
 	}
 
+	//Mutator for Price
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
+	//Accessor for No of Created Computers
 	public static int findNumberOfCreatedComputers() {
 			return totalNoOfComputers;
 		}
      
-    
+    // Overridden ToString method 
     public String toString() {
 		return "Computer Details: \n" + "Brand Name: "+this.brand+ "\nModel: "+this.model+"\nSerial No: "+this.SN+ "\nPrice: "+this.price+"\n";
     	
     }
     
+    //Overridden equals method
     public boolean equals(Object obj) {
 		if(obj==null||(this.getClass()!=obj.getClass()))
 				return false;

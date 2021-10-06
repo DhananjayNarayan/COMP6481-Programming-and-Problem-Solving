@@ -1,8 +1,8 @@
-// -----------------------------------------------------
-// Assignment 1 - COMP 6481
-// © Dhananjay Narayan, Nilesh Aggarwal
-// Written by: Dhananjay Narayan (40164521), Nilesh Aggarwal( )
-// ----------------------------------------------------- 
+//-----------------------------------------------------
+//Assignment 1 - COMP 6481
+//© Dhananjay Narayan, Nilesh Aggarwal
+//Written by: Dhananjay Narayan (40164521), Nilesh Aggarwal(40164417)
+//----------------------------------------------------- 
 
 class Computer{
 
@@ -10,12 +10,20 @@ class Computer{
 	 private String brand;
 	 private String model;
 	 private long SN;
-     private double price;	 
-     private static int totalNoOfComputers=0;
-	
-  //Parameterized Constructor
-	public Computer(String brand, String model, long sN, double price) {
-		
+  	 private double price;	 
+	 private static int totalNoOfComputers=0;
+
+	 //Default Constructor
+	 public Computer() {
+			this.brand="NA";
+			this.model="NA";
+			this.SN=0;
+			this.price=0;
+			totalNoOfComputers++;
+		}
+	 
+	//Parameterized Constructor
+	public Computer(String brand, String model, long sN, double price) {	
 		this.brand = brand;
 		this.model = model;
 		this.SN = sN;
@@ -24,24 +32,16 @@ class Computer{
 		this.toString();
 	}
 	
-   //Copy Constructor
+	//Copy Constructor
 	public Computer (Computer comp) {
-	this.brand=comp.brand;
-	this.model=comp.model;
-	this.price=comp.price;
-	this.SN=comp.SN;
-	}
-	
-	//Default Constructor
-	public Computer() {
-		this.brand="NA";
-		this.model="NA";
-		this.SN=0;
-		this.price=0;
+		this.brand=comp.brand;
+		this.model=comp.model;
+		this.price=comp.price;
+		this.SN=comp.SN;
 		totalNoOfComputers++;
 	}
 	
-	//Accessor for Brand
+	//Getter method for Brand
 	public String getBrand() {
 		return brand;
 	}
@@ -51,7 +51,7 @@ class Computer{
 		this.brand = brand;
 	}
 
-	//Accessor for Model
+	//Getter method for Model
 	public String getModel() {
 		return model;
 	}
@@ -61,7 +61,7 @@ class Computer{
 		this.model = model;
 	}
 
-	//Accessor for Serial Number SN
+	//Getter method for Serial Number SN
 	public long getSN() {
 		return SN;
 	}
@@ -85,20 +85,32 @@ class Computer{
 	public static int findNumberOfCreatedComputers() {
 			return totalNoOfComputers;
 		}
-     
-    // Overridden ToString method 
-    public String toString() {
+  
+ // Overridden ToString method 
+ public String toString() {
 		return "Computer Details: \n" + "Brand Name: "+this.brand+ "\nModel: "+this.model+"\nSerial No: "+this.SN+ "\nPrice: "+this.price+"\n";
-    	
-    }
-    
-    //Overridden equals method
-    public boolean equals(Object obj) {
-		if(obj==null||(this.getClass()!=obj.getClass()))
+ 	
+ }
+ 
+ //Overridden equals method
+ public boolean equals(Object obj) {
+		if(obj==null || (this.getClass() != obj.getClass()))
 				return false;
-				else
-				{     Computer comp  = (Computer)obj;
-					return (this.brand == comp.brand && this.model ==comp.model && this.price==comp.price && this.SN==comp.SN );
-				}		
+		else
+		{     
+			Computer comp  = (Computer)obj;
+			return (this.brand == comp.brand && this.model ==comp.model && this.price==comp.price && this.SN==comp.SN );
+		}		
 	}
+ public static void main(String[] args) {
+	 
+	 // Creating some Computer objects to test the functions
+	 Computer c1 = new Computer();
+	 Computer c2 = new Computer();
+	 Computer c3 = new Computer(c1);
+	 System.out.println(c1.toString());
+	 System.out.println(c2.toString());
+	 System.out.println(c3.toString());
+	 System.out.println(Computer.findNumberOfCreatedComputers());
+ }
 }

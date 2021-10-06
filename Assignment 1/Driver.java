@@ -3,7 +3,7 @@ import java.util.*;
 // -----------------------------------------------------
 // Assignment 1 - COMP 6481
 // © Dhananjay Narayan, Nilesh Aggarwal
-// Written by: Dhananjay Narayan (40164521), Nilesh Aggarwal( )
+// Written by: Dhananjay Narayan (40164521), Nilesh Aggarwal(40164417)
 // ----------------------------------------------------- 
 
 public class Driver {
@@ -16,10 +16,10 @@ public class Driver {
 		
 		System.out.println("=============================");
         System.out.println("Welcome to the Computer Store");
-		System.out.println("=============================");
-		System.out.println();
+		System.out.println("=============================\n");
 		
 		System.out.println("Enter the maximum number of Computers your store can have: ");
+		System.out.println();
 		
 		int maxComputers = sc.nextInt();
 		
@@ -28,7 +28,7 @@ public class Driver {
 		
 		//Main menu
 		while(true) {
-			System.out.println("\n What do you want to do?\n");
+			System.out.println("What do you want to do?\n");
 			System.out.println("1. Enter new computers (password required)");
 			System.out.println("2. Change information of a computer (password required)");
 			System.out.println("3. Display all computers by a specific brand");
@@ -52,24 +52,31 @@ public class Driver {
 				int noOfCompToAdd = sc.nextInt();
 				
 				int computersTillNow = Computer.findNumberOfCreatedComputers();
-				System.out.println("Already created computers till now: "+computersTillNow+ " out of "+maxComputers);
+				
+				System.out.println("Already created computers till now: " + computersTillNow + " out of " + maxComputers);
 				int availableSpace = maxComputers - computersTillNow;
-				if(noOfCompToAdd>availableSpace) {
-					System.out.println("NO ENOUGH SPACE TO ADD. The available space is "+availableSpace);
+				
+				if(noOfCompToAdd > availableSpace) {
+					System.out.println("NO ENOUGH SPACE TO ADD. The available space is "+ availableSpace);
 					break;
 				}
 				else {
 					for(int i=1;i<=noOfCompToAdd;i++) {
 						System.out.println("Enter the Brand of Computer "+i+" of "+noOfCompToAdd+" computers to be added.");
 						String brand = sc.next();
+						
 						System.out.println("Enter the Model of Computer "+i+" of "+noOfCompToAdd+" computers to be added.");
 						String model = sc.next();
+						
 						System.out.println("Enter the Serial Number of Computer "+i+" of "+noOfCompToAdd+" computers to be added.");
 						long SN=sc.nextLong();
+						
 						System.out.println("Enter the Price of Computer "+i+" of "+noOfCompToAdd+" computers to be added.");
 						double price=sc.nextDouble();
+						
 						inventory[computersTillNow]= new Computer(brand,model,SN,price);
 						System.out.println(inventory[computersTillNow].toString());
+						
 						computersTillNow++;
 					}
 					System.out.println("Total Computers now added is: "+Computer.findNumberOfCreatedComputers()+" of "+maxComputers);
@@ -88,9 +95,10 @@ public class Driver {
 					
 				
 				System.out.println("Enter the Computer Number (STARTING with 0) that you want to modify: ");
+				
 				int compNoToModify = sc.nextInt();
 				
-				if(compNoToModify<0 || compNoToModify>=Computer.findNumberOfCreatedComputers() || inventory[compNoToModify]==null) {
+				if(compNoToModify < 0 || compNoToModify >= Computer.findNumberOfCreatedComputers() || inventory[compNoToModify] == null) {
 					System.out.println("There is no computer at this location. Do you want to try a different computer number?");
 					System.out.println("Press 1 for Yes or any other number key to exit!");
 					int c = sc.nextInt();
@@ -135,7 +143,7 @@ public class Driver {
 	// Function to update the details of the computer. 
 	public static void updateComputer(int compNoToModify, Computer[] inventory) {
 		while(true) {
-			System.out.println("\n What information would you like to change?\n");
+			System.out.println("What information would you like to change?\n");
 			System.out.println("1. brand");
 			System.out.println("2. model");
 			System.out.println("3. SN");
@@ -175,7 +183,7 @@ public class Driver {
 				System.out.println(inventory[compNoToModify].toString());
 				break;
 			case 5:
-				System.out.println("Bye");
+				System.out.println("Good Bye!");
 				//System.exit(0);
 				//break;
 				return;
@@ -212,7 +220,7 @@ public class Driver {
 		
 		for(int i=0;i<=inventory.length;i++) {
 			try {
-				if(inventory[i].getBrand().equals(brand)) {
+				if(inventory[i].getBrand().equalsIgnoreCase(brand)) {
 					System.out.println("\n"+ inventory[i].toString());
 				}
 				else

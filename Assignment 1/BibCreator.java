@@ -185,13 +185,22 @@ public class BibCreator {
 	 */
 	public static void deleteFile(int i){
 		
-		File file = null;
-		file = new File("IEEE"+ i +".json");
-		file.delete();
-		file = new File("ACM" + i + ".json");
-		file.delete();
-		file = new File("NJ" + i + ".json");
-		file.delete();
+		File ieeeFile = new File("IEEE" +i+ ".json");
+		File acmFile = new File("ACM" +i+ ".json");
+		File njFile = new File("NJ" +i+ ".json");
+
+		if (ieeeFile.exists()) {
+			ieeeFile.delete();
+		}
+
+		if (acmFile.exists()) {
+			acmFile.delete();
+		}
+
+		if (njFile.exists()) {
+			njFile.delete();
+		}
+
 	}	
 	
 	/**

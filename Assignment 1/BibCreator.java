@@ -1,3 +1,9 @@
+//-----------------------------------------------------
+//Assignment 2 - COMP 6481
+//© Dhananjay Narayan, Nilesh Aggarwal
+//Written by: Dhananjay Narayan (40164521), Nilesh Aggarwal(40164417)
+//----------------------------------------------------- 
+
 import java.io.*;
 import java.util.*;
 
@@ -31,12 +37,12 @@ public class BibCreator {
 		Scanner sc = null;
 		Scanner kb = new Scanner(System.in);
 		
-		PrintWriter ieee = null; //for the PrintWriter to write the files
+		PrintWriter ieee = null; 
 		PrintWriter acm = null;
 		PrintWriter nj = null;
 	
-		BufferedReader br = null; //for the BufferedReader to read the files created
-		String readFile =""; //name of the file being read by BufferedReader
+		BufferedReader br = null; 
+		String readFile =""; 
 		
 
 		System.out.println("Welcome to BibCreator!\n");
@@ -154,15 +160,16 @@ public class BibCreator {
 	
 	private static void processFilesForValidation(int i, Scanner sc, PrintWriter ieee, PrintWriter acm, PrintWriter nj) throws FileInvalidException{
 
-		String str="";
 		int numArticle =0;
+		String str="";
+		
 		
 		StringTokenizer stkn = null; 
 		String[] token;
 		
-		String IEEE=""; //the final variable that will be output into the ieee.json file
-		String ACM=""; //the final variable that will be output into the acm.json file
-		String NJ=""; //the final variable that will be output into the nj.json file
+		String IEEE=""; 
+		String ACM=""; 
+		String NJ=""; 
 		
 		String Author =""; 
 		String IEEEauthor="";
@@ -203,49 +210,49 @@ public class BibCreator {
 				IEEEauthor = Author.replaceAll(" and", ",");	
 				NJauthor = Author.replaceAll("and", "&");
 				
-				stkn = new StringTokenizer(Author, " "); //Tokenize the lengthy authors
+				stkn = new StringTokenizer(Author, " "); 
 				token = new String[stkn.countTokens()];
 				for(int j=0; j<stkn.countTokens(); j++){
-					token[j] = stkn.nextToken(); //Assign the separated words into token[]
+					token[j] = stkn.nextToken(); 
 				}				
 				ACMauthor = token[0] + " " + token[1] + " et al";		
 			}
 			
-			if (str.contains("title={")) { //when it reaches the field title, it copies the content of it and assign the its respected variables
+			if (str.contains("title={")) { 
 				Title = str.substring(str.indexOf("{")+1, str.indexOf("}"));	
 			}
 			
-			if (str.contains("journal={")) { //when it reaches the field journal, it copies the content of it and assign the its respected variables
+			if (str.contains("journal={")) { 
 				Journal = str.substring(str.indexOf("{")+1, str.indexOf("}")); 
 			}
 			
-			if (str.contains("volume={")){ //when it reaches the field volume, it copies the content of it and assign the its respected variables
+			if (str.contains("volume={")){ 
 				Volume = str.substring(str.indexOf("{")+1, str.indexOf("}")); 
 			
 			}
 			
-			if (str.contains("number={")) { //when it reaches the field number, it copies the content of it and assign the its respected variables
+			if (str.contains("number={")) { 
 				Number = str.substring(str.indexOf("{")+1, str.indexOf("}")); 
 			}
 			
-			if (str.contains("pages={")) { //when it reaches the field pages, it copies the content of it and assign the its respected variables
+			if (str.contains("pages={")) { 
 				Page = str.substring(str.indexOf("{")+1, str.indexOf("}")); 
 			}
 			
-			if (str.contains("month={")){ //when it reaches the field month, it copies the content of it and assign the its respected variables
+			if (str.contains("month={")){ 
 				Month = str.substring(str.indexOf("{")+1, str.indexOf("}")); 
 			}
 			
-			if (str.contains("year={")){ //when it reaches the field year, it copies the content of it and assign the its respected variables
+			if (str.contains("year={")){ 
 				Year = str.substring(str.indexOf("{")+1, str.indexOf("}")); 
 			}			
 			
-			if (str.contains("doi={")){ //when it reaches the field doi, it copies the content of it and assign the its respected variables
+			if (str.contains("doi={")){ 
 				DOI = "DOI:https://doi.org/" + str.substring(str.indexOf("{")+1, str.indexOf("}"));
 			}
 			
 			
-			if (str.equals("}")){ //once it reaches the end of the article, it combines each field into one single output so that it can be written properly into the respective file and format
+			if (str.equals("}")){ 
 				IEEE = IEEEauthor +". " + "\""+Title+"\"" +", " + Journal +", " + "vol. " + Volume +", " + "no. " +Number +", " + "p. " + Page +", " + Month + " " + Year +".";
 				ieee.println(IEEE);
 				ieee.println();

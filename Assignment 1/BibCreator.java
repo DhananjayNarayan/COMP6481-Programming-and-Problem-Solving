@@ -7,18 +7,34 @@
 import java.io.*;
 import java.util.*;
 
+/**
+ * A custom exception class for Invalid Files when fields are empty
+ * @author dhananjaynarayan
+ * @author Nilesh Aggarwal
+ */
 
  class FileInvalidException extends Exception{
 	
+	 /**
+	  * Default Constructor
+	  */
 	public FileInvalidException()
 	{
 		super("Error: Input file cannot be parsed due to missing information (i.e. month={}, title={}, etc.) ");
 	}
 	
+	/**
+	 * Parameterized Constructor
+	 * @param message string to be displayed
+	 */
 	public FileInvalidException(String message)
 	{
 		super(message);
 	}
+	
+	/**
+	 * Method to return the message
+	 */
 	
 	public String getMessage()
 	{
@@ -26,12 +42,23 @@ import java.util.*;
 	}
 }
 
+ /**
+  * Main class for BibCreator
+  * @author dhananjaynarayan
+  * @author Nilesh Aggarwal
+  */
 public class BibCreator {
 	
+	/**
+	 * Static data members for counters
+	 */
 	public static int validCounter=0; 
 	public static int invalidCounter=0; 
 
-	
+	/**
+	 * Main Driver method for Bibcreator
+	 * @param args string
+	 */
 	public static void main(String[] args){
 		
 		Scanner sc = null;
@@ -137,6 +164,11 @@ public class BibCreator {
 		
 	}
 		
+	/**
+	 * A method to display the content of created files
+	 * @param br BufferedReader Object
+	 * @throws IOException InputOutput Exception
+	 */
 	private static void displayCreatedFiles(BufferedReader br) throws IOException {
 		int x;
 		x = br.read();
@@ -147,6 +179,10 @@ public class BibCreator {
 		br.close();
 	}
 
+	/**
+	 * A method to delete a file
+	 * @param i the counter for the file
+	 */
 	public static void deleteFile(int i){
 		
 		File file = null;
@@ -158,6 +194,15 @@ public class BibCreator {
 		file.delete();
 	}	
 	
+	/**
+	 * A method to validate the files and then write
+	 * @param i the counter for the file
+	 * @param sc scanner object
+	 * @param ieee printwriter for ieee
+	 * @param acm printwriter for acm
+	 * @param nj printwriter for nj
+	 * @throws FileInvalidException Exception when there is an empty field
+	 */
 	private static void processFilesForValidation(int i, Scanner sc, PrintWriter ieee, PrintWriter acm, PrintWriter nj) throws FileInvalidException{
 
 		int numArticle =0;

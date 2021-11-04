@@ -108,7 +108,7 @@ class Computer{
 	 Computer c1 = new Computer();
 	 Computer c2 = new Computer();
 	 Computer c3 = new Computer(c1);
-	 System.out.println(c1.toString());
+	 System.out.println(c1);
 	 System.out.println(c2.toString());
 	 System.out.println(c3.toString());
 	 System.out.println(Computer.findNumberOfCreatedComputers());
